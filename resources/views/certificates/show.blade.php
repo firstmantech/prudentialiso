@@ -25,8 +25,8 @@
           box-shadow: 0 0 0.5cm rgba(0,0,0,0.5);
         }
         page[size="A4"] {  
-          width: 2480px;
-          height: 3508px; 
+          width: 794px;
+          height: 1123px; 
         }
         page[size="A4"][layout="portrait"] {
           width: 29.7cm;
@@ -83,44 +83,43 @@
             clear: both;
         }
         td{
-          padding: 5px;
+          padding: 4px;
         }
         .company{
-          margin-top: 1110px;
+          margin-top: 355px;
           text-align: center;
           font-weight: bold;
-          font-size: 70px;
+          font-size: 20px;
         }
         .address{
           padding-top: 500px;
           text-align: center;
           font-weight: bold;
-          font-size: 50px;
+          font-size: 15px;
         }
         .scope{
-          padding-top: 475px;
+          padding-top: 135px;
           text-align: center;
           font-weight: bold;
-          font-size: 40px;
         }
         .certificate{
-          padding-top: 200px;
+          padding-top: 62px;
           text-align: center;
           margin-right:-30px;
         }
         .regisdate{
-          padding-top: 110px;
-          padding-left: 700px;
+          padding-top: 20px;
+          padding-left: 240px;
         }
         .expdate{
-          padding-left: 317px;
+          padding-left: 10px;
         }
         .survdate{
-         padding-left: 960px; 
+         padding-left: 320px; 
         }
         .qrcode{
-          padding-top: 530px;
-          padding-left: 2130px;
+          padding-top: 158px;
+          padding-left: 690px;
         }  
         table#table1 {
           width:70%; 
@@ -137,76 +136,70 @@
 <body>
 
 <section>
-  <page size="A4" style="background-image:url('../assets/formats/{{ str_replace(':', '', $certificate->standard) }}.jpg'); background-repeat: no-repeat;">
+  <page size="A4" style="background-image:url('../assets/formats/90012015-sm.jpg'); background-repeat: no-repeat; width: 794px; height: 1123px;">
       <div class="row col-md-12 company">
           <table id="table1">
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold;font-size: 70px;">
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold;">
               <td>{{ $certificate->company_name }}</td>
             </tr>
-            <tr>
-              <td></td>
-            </tr>
-            <tr>
-              <td></td>
-            </tr>
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold;font-size: 50px;">
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold;font-size: 15px;">
               <td>{{ $certificate->address_line_one }}</td>
             </tr>
-                        <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold;font-size: 50px;">
+                        <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold;font-size: 15px;">
               <td>{{ $certificate->address_line_two }}</td>
             </tr>
-                        <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold;font-size: 50px;">
+                        <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold;font-size: 15px;">
               <td>{{ $certificate->address_line_three }}</td>
             </tr>                                             
         </table>
       </div>
       <div class="row col-md-12 scope">
           <table id="table2">
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 30px;">
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 10px;">
               <td>{{ $certificate->scope_line_one }}</td>
             </tr>
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 30px;">
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 10px;">
               <td>{{ $certificate->scope_line_two }}</td>
             </tr>
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 30px;">
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 10px;">
               <td>{{ $certificate->scope_line_three }}</td>
             </tr>     
         </table>
       </div>
       <div class="row col-md-12 certificate">
           <table id="table1">
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold; font-size: 50px;">
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold; font-size: 15px;">
               <td>{{ $certificate->certificate_no }}</td>
             </tr>
         </table>
       </div>
       <div class="row col-md-12 regisdate">
           <table id="table1">
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 40px;">
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 15px;">
               <td>{{ date('d/m/Y', strtotime($certificate->issue_date)) }}</td>
-              <td style="padding-left: 690px;">{{ date('d/m/Y', strtotime($certificate->issue_date)) }}</td>
+              <td style="padding-left: 215px;">{{ date('d/m/Y', strtotime($certificate->issue_date)) }}</td>
             </tr>
         </table>
       </div>
       <div class="row col-md-12 expdate">
           <table>
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 40px;">
-              <td style="padding-left: 650px;">{{ date('d/m/Y', strtotime($certificate->expiry_date)) }}</td>
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 15px;">
+              <td style="padding-left: 315px;">{{ date('d/m/Y', strtotime($certificate->expiry_date)) }}</td>
             </tr>
         </table>
       </div>
       <div class="row col-md-12 survdate">
           <table>
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 40px;">
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 15px;">
               <td>{{ date('d/m/Y', strtotime($certificate->first_surv)) }}</td>
-              <td style="padding-left: 720px;">{{ date('d/m/Y', strtotime($certificate->second_surv)) }}</td>
+              <td style="padding-left: 215px;">{{ date('d/m/Y', strtotime($certificate->second_surv)) }}</td>
             </tr>
         </table>
       </div>
       <div class="row col-md-12 qrcode">
           <table id="table1">
-            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 40px;">
-              <td>{!! QrCode::size(250)->generate(Request::url()); !!}</td>
+            <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 15px;">
+              <td>{!! QrCode::size(80)->generate(Request::url()); !!}</td>
             </tr>
         </table>
       </div>

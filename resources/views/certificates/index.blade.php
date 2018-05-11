@@ -47,6 +47,7 @@
                         <th>2nd Surv</th>
                         <th>Expiry Date</th>
                         <th>Status</th>
+                        <th>Download</th>
                         <th>Action</th>
                     </tr>
                     </thead>
@@ -70,6 +71,7 @@
                         <td>{{ $certificate->second_surv }}</td>
                         <td>{{ $certificate->expiry_date }}</td>
                         <td>{{ $certificate->status }}</td>
+                        <td><a href="{{ asset('certificates_path') }}">{{ $certificate->status }}</a></td>
                         <td>
                             <a class="btn btn-sm btn-rounded btn-success" href="{{ route('certificates.show',$certificate->id) }}">View</a>
                             <a class="btn btn-sm btn-rounded btn-info" href="{{ route('certificates.edit',$certificate->id) }}">Edit</a>
