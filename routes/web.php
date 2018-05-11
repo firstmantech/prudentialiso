@@ -22,6 +22,8 @@ Auth::routes();
 
 Route::resource('/certificates', 'CertificateController');
 
+Route::get('generate.certificates', 'CertificateController@generateCertificate')->name('generate.certificate');
+
 Route::get('mycertificate/{id}', function ($id) {
     
     $certificate = Certificate::find($id);

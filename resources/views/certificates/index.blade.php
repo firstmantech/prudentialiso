@@ -73,6 +73,7 @@
                         <td>
                             <a class="btn btn-sm btn-rounded btn-success" href="{{ route('certificates.show',$certificate->id) }}">View</a>
                             <a class="btn btn-sm btn-rounded btn-info" href="{{ route('certificates.edit',$certificate->id) }}">Edit</a>
+                            <a class="btn btn-sm btn-rounded btn-info" href="{{ route('generate.certificate') }}">Generate</a>
                             {{Form::open(array( 
                                 'route' => array( 'certificates.destroy', $certificate->id ), 
                                 'method' => 'delete', 

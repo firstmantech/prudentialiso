@@ -104,10 +104,9 @@
           font-size: 40px;
         }
         .certificate{
-          padding-top: 285px;
+          padding-top: 200px;
           text-align: center;
           margin-right:-30px;
-          padding-right:190px;
         }
         .regisdate{
           padding-top: 110px;
@@ -127,6 +126,11 @@
           width:70%; 
           margin-left:15%; 
           margin-right:15%;
+        }
+        table#table2 {
+          width:80%; 
+          margin-left:10%; 
+          margin-right:10%;
         }
     </style>
   </head>
@@ -157,7 +161,7 @@
         </table>
       </div>
       <div class="row col-md-12 scope">
-          <table id="table1">
+          <table id="table2">
             <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 30px;">
               <td>{{ $certificate->scope_line_one }}</td>
             </tr>

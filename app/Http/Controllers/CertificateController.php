@@ -89,20 +89,6 @@ class CertificateController extends Controller
         $certificate->expiry_date = $request->expiry_date;
         $certificate->status = $request->status;
         $certificate->save();
-
-        $certificate_id = Certificate::orderBy('created_at', 'desc')->first();
-
-        $url = 'http://localhost:8000/mycertificate/'.$certificate_id->id;
-
-        $filename = $certificate_id->certificate_no.'.jpg';
-
-        $path = public_path();
-
-        Converter::make($url)
-        ->toJpg()
-        ->width(2480)
-        ->height(3508)        
-        ->save($path.'/certificates_path/'.$filename);
         
         return redirect('certificates')->with('success', 'Successfully Created the Certificate!');
     }
@@ -190,9 +176,36 @@ class CertificateController extends Controller
     public function destroy($id)
     {
         //
-        $id = Certificate::find( $id );
-        $id ->delete();
+        $id = Certificate::find($id);
+        $id->delete();
 
         return redirect('/certificates')->with('success', 'Successfully Deleted the Certificate!');
+    }
+
+    public function generateCertificate()
+    {
+        $certificate_id = Certificate::orderBy('id', 'desc')->first();
+
+        $url = 'http://localhost:8000/mycertificate/'.$certificate_id->id;
+
+        $cert_id = Certificate::find($certificate_id->id);
+
+        $filename = $cert_id->certificate_no.'.jpg';
+
+        $path = public_path();
+
+        Converter::make($url)
+        ->toJpg()
+        ->width(2480)
+        ->height(3508)        
+        ->save($path.'/certificates_path/'.$filename);
+
+        $cv_path = public_path().'/certificates_path/'.$filename;
+
+        $certificate = Certificate::find($certificate_id->id);
+        $certificate->path = $cv_path;
+        $certificate->save();
+
+        return redirect('/certificates')->with('success', 'Certificate Generated Successfully!');
     }
 }
