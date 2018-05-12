@@ -103,7 +103,7 @@
           font-weight: bold;
         }
         .certificate{
-          padding-top: 62px;
+          padding-top: 58px;
           text-align: center;
           margin-right:-30px;
         }
@@ -136,7 +136,7 @@
 <body>
 
 <section>
-  <page size="A4" style="background-image:url('../assets/formats/90012015-sm.jpg'); background-repeat: no-repeat; width: 794px; height: 1123px;">
+  <page size="A4" style="background-image:url('../assets/formats/{{ str_replace(':', '', $certificate->standard) }}-draft.jpg'); background-repeat: no-repeat; width: 794px; height: 1123px;">
       <div class="row col-md-12 company">
           <table id="table1">
             <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-weight: bold;">
@@ -173,36 +173,45 @@
             </tr>
         </table>
       </div>
+      @php
+        $issue_date = $certificate->issue_date;
+        $expiry_date = $certificate->expiry_date;
+        $first_surv = $certificate->first_surv;
+        $second_surv = $certificate->second_surv;
+      @endphp
       <div class="row col-md-12 regisdate">
           <table id="table1">
             <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 15px;">
-              <td>{{ date('d/m/Y', strtotime($certificate->issue_date)) }}</td>
-              <td style="padding-left: 215px;">{{ date('d/m/Y', strtotime($certificate->issue_date)) }}</td>
+              <td>{{ $issue_date ? date('d/m/Y', strtotime($issue_date)) : '' }}</td>
+              <td style="padding-left: 215px;">{{ $issue_date ? date('d/m/Y', strtotime($issue_date)) : '' }}</td>
             </tr>
         </table>
       </div>
       <div class="row col-md-12 expdate">
           <table>
             <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 15px;">
-              <td style="padding-left: 315px;">{{ date('d/m/Y', strtotime($certificate->expiry_date)) }}</td>
+              <td style="padding-left: 315px;">{{ $expiry_date ? date('d/m/Y', strtotime($expiry_date)) : '' }}</td>
             </tr>
         </table>
       </div>
       <div class="row col-md-12 survdate">
           <table>
             <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 15px;">
-              <td>{{ date('d/m/Y', strtotime($certificate->first_surv)) }}</td>
-              <td style="padding-left: 215px;">{{ date('d/m/Y', strtotime($certificate->second_surv)) }}</td>
+              <td>{{ $first_surv ? date('d/m/Y', strtotime($first_surv)) : '' }}</td>
+              <td style="padding-left: 215px;">{{ $second_surv ? date('d/m/Y', strtotime($second_surv)) : '' }}</td>
             </tr>
         </table>
       </div>
+      <!-- @php
+        $url = 'https://prudentialiso.com/mycertificate/'.$certificate->id;
+      @endphp
       <div class="row col-md-12 qrcode">
           <table id="table1">
             <tr style="font-family: 'Open Sans', sans-serif; color: #000; font-size: 15px;">
-              <td>{!! QrCode::size(80)->generate(Request::url()); !!}</td>
+              <td>{!! QrCode::size(80)->generate($url); !!}</td>
             </tr>
         </table>
-      </div>
+      </div> -->
   </page>
 </section>
 

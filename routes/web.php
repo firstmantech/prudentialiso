@@ -24,6 +24,8 @@ Route::resource('/certificates', 'CertificateController');
 
 Route::get('generate.certificates', 'CertificateController@generateCertificate')->name('generate.certificate');
 
+Route::get('draft.certificates', 'CertificateController@draftCertificate')->name('draft.certificate');
+
 Route::get('mycertificate/{id}', function ($id) {
     
     $certificate = Certificate::find($id);
@@ -31,6 +33,33 @@ Route::get('mycertificate/{id}', function ($id) {
     return view('certificate',compact('certificate')); 
 
 })->name('mycertificate');
+
+Route::get('draftcertificate/{id}', function ($id) {
+    
+    $certificate = Certificate::find($id);
+
+    return view('draft',compact('certificate')); 
+
+})->name('draft');
+
+Route::get('certificates_path/{filename}', function($filename)
+{
+    // Check if file exists in app/storage/file folder
+    $file_path = public_path() .'/certificates_path/'. $filename;
+    if (file_exists($file_path))
+    {
+        // Send Download
+        return Response::download($file_path, $filename, [
+            'Content-Length: '. filesize($file_path)
+        ]);
+    }
+    else
+    {
+        // Error
+        exit('Requested file does not exist on our server!');
+    }
+})
+->where('filename', '[A-Za-z0-9\-\_\.]+');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

@@ -2,7 +2,7 @@
         <label for="certificate_no" class="col-md-4 control-label">Certificate Number</label>
 
         <div class="col-md-6">
-            {!! Form::text('certificate_no', null, array('class' => 'form-control', 'id' => 'certificate_no', 'required' => '')) !!}
+            {!! Form::text('certificate_no', null, array('class' => 'form-control', 'id' => 'certificate_no')) !!}
             @if ($errors->has('certificate_no'))
                 <span class="help-block">
                     <strong>{{ $errors->first('certificate_no') }}</strong>
@@ -119,7 +119,7 @@
         <label for="standard" class="col-md-4 control-label">Standard</label>
 
         <div class="col-md-6">
-            {!! Form::select('standard', array('' => '--Select--', '9001:2015' => '9001:2015', '22000:2005' => '22000:2005', 'GMP' => 'GMP', '14001:2015' => '14001:2015', 'ROHS' => 'ROHS', 'Green' => 'Green', '27000:2013' => '27000:2013', '13485:2016' => '13485:2016'), null,  array('class' => 'form-control', 'id' => 'standard', 'required' => '')) !!}
+            {!! Form::select('standard', array('' => '--Select--', '9001:2015' => '9001:2015', '22000:2005' => '22000:2005', 'GMP' => 'GMP', '14001:2015' => '14001:2015', 'ROHS' => 'ROHS', 'Green' => 'Green', '27000:2013' => '27000:2013', '13485:2016' => '13485:2016'), null,  array('class' => 'form-control', 'id' => 'standard')) !!}
             @if ($errors->has('standard'))
                 <span class="help-block">
                     <strong>{{ $errors->first('standard') }}</strong>
@@ -132,7 +132,7 @@
         <label for="issue_date" class="col-md-4 control-label">Issue Date</label>
 
         <div class="col-md-6">
-            {!! Form::date('issue_date', null, array('class' => 'form-control', 'id' => 'issue_date', 'required' => '')) !!}
+            {!! Form::date('issue_date', null, array('class' => 'form-control', 'id' => 'issue_date')) !!}
             @if ($errors->has('issue_date'))
                 <span class="help-block">
                     <strong>{{ $errors->first('issue_date') }}</strong>
@@ -145,7 +145,7 @@
         <label for="first_surv" class="col-md-4 control-label">First Surv</label>
 
         <div class="col-md-6">
-            {!! Form::date('first_surv', null, array('class' => 'form-control', 'id' => 'first_surv', 'required' => '')) !!}
+            {!! Form::date('first_surv', null, array('class' => 'form-control', 'id' => 'first_surv')) !!}
             @if ($errors->has('first_surv'))
                 <span class="help-block">
                     <strong>{{ $errors->first('first_surv') }}</strong>
@@ -158,7 +158,7 @@
         <label for="second_surv" class="col-md-4 control-label">Second Surv</label>
 
         <div class="col-md-6">
-            {!! Form::date('second_surv', null, array('class' => 'form-control', 'id' => 'second_surv', 'required' => '')) !!}
+            {!! Form::date('second_surv', null, array('class' => 'form-control', 'id' => 'second_surv')) !!}
             @if ($errors->has('second_surv'))
                 <span class="help-block">
                     <strong>{{ $errors->first('second_surv') }}</strong>
@@ -171,7 +171,7 @@
         <label for="expiry_date" class="col-md-4 control-label">Expiry Date</label>
 
         <div class="col-md-6">
-            {!! Form::date('expiry_date', null, array('class' => 'form-control', 'id' => 'expiry_date', 'required' => '')) !!}
+            {!! Form::date('expiry_date', null, array('class' => 'form-control', 'id' => 'expiry_date')) !!}
             @if ($errors->has('expiry_date'))
                 <span class="help-block">
                     <strong>{{ $errors->first('expiry_date') }}</strong>
@@ -184,7 +184,7 @@
         <label for="status" class="col-md-4 control-label">Status</label>
 
         <div class="col-md-6">
-            {!! Form::select('status', array('' => '--Select--', 'Active' => 'Active', 'Suspended' => 'Suspended', 'Cancelled' => 'Cancelled'), null,  array('class' => 'form-control', 'id' => 'status', 'required' => '')) !!}
+            {!! Form::select('status', array('' => '--Select--', 'Active' => 'Active', 'Suspended' => 'Suspended', 'Cancelled' => 'Cancelled'), null,  array('class' => 'form-control', 'id' => 'status')) !!}
             @if ($errors->has('status'))
                 <span class="help-block">
                     <strong>{{ $errors->first('status') }}</strong>

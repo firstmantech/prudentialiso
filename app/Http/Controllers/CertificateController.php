@@ -50,16 +50,10 @@ class CertificateController extends Controller
     {
         //
         request()->validate([
-            'certificate_no' => 'required',
             'company_name' => 'required',
             'address_line_one' => 'required',
             'scope_line_one' => 'required',
             'standard' => 'required',
-            'issue_date' => 'required',
-            'first_surv' => 'required',
-            'second_surv' => 'required',
-            'expiry_date' => 'required',
-            'status' => 'required',
         ]);
         
         $certificate = new Certificate;
@@ -126,16 +120,10 @@ class CertificateController extends Controller
     {
         //
         request()->validate([
-            'certificate_no' => 'required',
             'company_name' => 'required',
             'address_line_one' => 'required',
             'scope_line_one' => 'required',
             'standard' => 'required',
-            'issue_date' => 'required',
-            'first_surv' => 'required',
-            'second_surv' => 'required',
-            'expiry_date' => 'required',
-            'status' => 'required',
         ]);
 
         $certificate = Certificate::find($id);
@@ -198,14 +186,37 @@ class CertificateController extends Controller
         ->toJpg()
         ->width(2480)
         ->height(3508)        
-        ->save($path.'/certificates_path/'.$filename);
-
-        $cv_path = public_path().'/certificates_path/'.$filename;
+        ->save($path.'/certificates_path/'.$filename);        
 
         $certificate = Certificate::find($certificate_id->id);
-        $certificate->path = $cv_path;
+        $certificate->path = $filename;
         $certificate->save();
 
         return redirect('/certificates')->with('success', 'Certificate Generated Successfully!');
+    }
+
+    public function draftCertificate()
+    {
+        $certificate_id = Certificate::orderBy('id', 'desc')->first();
+
+        $url = 'http://localhost:8000/draftcertificate/'.$certificate_id->id;
+
+        $cert_id = Certificate::find($certificate_id->id);
+
+        $filename = 'draft'.$cert_id->certificate_no.'.jpg';
+
+        $path = public_path();
+
+        Converter::make($url)
+        ->toJpg()
+        ->width(2480)
+        ->height(3508)        
+        ->save($path.'/certificates_path/'.$filename);
+
+        $certificate = Certificate::find($certificate_id->id);
+        $certificate->draft = $filename;
+        $certificate->save();
+
+        return redirect('/certificates')->with('success', 'Draft Generated Successfully!');
     }
 }
