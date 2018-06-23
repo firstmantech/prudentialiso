@@ -119,7 +119,7 @@
         <label for="standard" class="col-md-4 control-label">Standard</label>
 
         <div class="col-md-6">
-            {!! Form::select('standard', array('' => '--Select--', '9001:2015' => '9001:2015', '22000:2005' => '22000:2005', 'GMP' => 'GMP', '14001:2015' => '14001:2015', 'ROHS' => 'ROHS', 'Green' => 'Green', '27000:2013' => '27000:2013', '13485:2016' => '13485:2016'), null,  array('class' => 'form-control', 'id' => 'standard')) !!}
+            {!! Form::select('standard', array('' => '--Select--', '9001:2015' => '9001:2015', '22000:2005' => '22000:2005', 'HACCP' => 'HACCP', 'GMP' => 'GMP', '14001:2015' => '14001:2015', 'ROHS' => 'ROHS', 'Green' => 'Green', '27000:2013' => '27000:2013', '13485:2016' => '13485:2016'), null,  array('class' => 'form-control', 'id' => 'standard')) !!}
             @if ($errors->has('standard'))
                 <span class="help-block">
                     <strong>{{ $errors->first('standard') }}</strong>
